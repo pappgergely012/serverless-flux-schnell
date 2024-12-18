@@ -21,6 +21,11 @@ def run_inference(
     num_inference_steps=4, 
     num_samples=3, 
 ):
+    print(f"Processed prompt is: {prompt}")
+
+    if not isinstance(prompt, (str, list)):
+        raise ValueError(f"`prompt` must be a string or list, got {type(prompt)}")
+    
     images = []
     seeds_used = []
 

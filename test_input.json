@@ -1,9 +1,9 @@
 {
   "input": {
-      "prompt": "A beaver holds a sign 'Merry Christmas'",
-      "width": 256,
-      "height": 256,
-      "num_inference_steps": 4,
-      "randomize_seed": true
+    "prompt": "A beaver holds a sign 'Merry Christmas'",
+    "width": 256,
+    "height": 256,
+    "num_inference_steps": 4,
+    "randomize_seed": true
   }
 }
