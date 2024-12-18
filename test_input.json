@@ -1,6 +1,9 @@
 {
   "input": {
-      "instruction": "create a image",
-      "seconds": 15
+      "prompt": "create a image",
+      "width": 256,
+      "height": 256,
+      "num_inference_steps": 4,
+      "randomize_seed": true
   }
 }
