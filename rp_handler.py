@@ -20,7 +20,6 @@ def run_inference(
     height=1024, 
     num_inference_steps=4, 
     num_samples=3, 
-    progress=gr.Progress(track_tqdm=True)
 ):
     images = []
     seeds_used = []
