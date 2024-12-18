@@ -6,4 +6,5 @@ xformers
 protobuf
 torch==2.1
 runpod
+Pillow
 sentencepiece

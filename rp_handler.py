@@ -3,6 +3,8 @@ import random
 import runpod
 import torch
 from diffusers import DiffusionPipeline
+from PIL import Image  # Import for displaying images
+
 
 dtype = torch.bfloat16
 device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -60,7 +62,7 @@ def handler(event):
     num_samples = input_data.get("num_samples", 1)
 
     # Call run_inference with destructured arguments
-    json = run_inference(
+    images, seeds  = run_inference(
         prompt=prompt,
         seed=seed,
         randomize_seed=randomize_seed,
@@ -70,7 +72,18 @@ def handler(event):
         num_samples=num_samples
     )
 
-    return json
+    for idx, image in enumerate(images):
+        image_path = f"output_image_{idx}.png"
+        image.save(image_path)  # Save the image
+        print(f"Image saved as: {image_path}")
+        
+        # Display the image
+        image.show()  # Opens the image in the default viewer
+
+    return {
+        "images_saved": [f"output_image_{i}.png" for i in range(len(images))],
+        "seeds_used": seeds
+    }
 
 if __name__ == '__main__':
     runpod.serverless.start({'handler': handler})
