@@ -1,6 +1,6 @@
 {
   "input": {
-      "prompt": "create a image",
+      "prompt": "A beaver holds a sign 'Merry Christmas'",
       "width": 256,
       "height": 256,
       "num_inference_steps": 4,
