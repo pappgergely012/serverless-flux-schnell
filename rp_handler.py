@@ -14,17 +14,14 @@ MAX_IMAGE_SIZE = 2048
 
 def run_inference(
     prompt, 
-    seed=42, 
-    randomize_seed=False, 
-    width=1024, 
-    height=1024, 
-    num_inference_steps=4, 
-    num_samples=3, 
+    seed, 
+    randomize_seed, 
+    width, 
+    height, 
+    num_inference_steps, 
+    num_samples, 
 ):
     print(f"Processed prompt is: {prompt}")
-
-    if not isinstance(prompt, (str, list)):
-        raise ValueError(f"`prompt` must be a string or list, got {type(prompt)}")
     
     images = []
     seeds_used = []
@@ -53,9 +50,27 @@ def run_inference(
 
 def handler(event):
     
-     json = run_inference(event["input"])
+    input_data = event["input"]
+    prompt = input_data["prompt"]
+    seed = input_data.get("seed", 42)
+    randomize_seed = input_data.get("randomize_seed", False)
+    width = input_data.get("width", 1024)
+    height = input_data.get("height", 1024)
+    num_inference_steps = input_data.get("num_inference_steps", 4)
+    num_samples = input_data.get("num_samples", 1)
 
-     return json
+    # Call run_inference with destructured arguments
+    json = run_inference(
+        prompt=prompt,
+        seed=seed,
+        randomize_seed=randomize_seed,
+        width=width,
+        height=height,
+        num_inference_steps=num_inference_steps,
+        num_samples=num_samples
+    )
+
+    return json
 
 if __name__ == '__main__':
     runpod.serverless.start({'handler': handler})
