@@ -1,0 +1,9 @@
+accelerate
+git+https://github.com/huggingface/diffusers.git
+invisible_watermark
+transformers==4.42.4
+xformers
+protobuf
+torch==2.1
+runpod
+sentencepiece
