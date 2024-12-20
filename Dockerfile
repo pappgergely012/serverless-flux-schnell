@@ -4,11 +4,17 @@ WORKDIR /
 
 RUN apt-get update && apt-get install -y git && apt-get clean
 
-COPY requirements.txt /
-
+# install requirements
+COPY builder/requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
+
+# Cache Models
+COPY builder/cache_models.py /cache_models.py
+RUN python3.11 /cache_models.py 
+
+ADD src .
 
 COPY rp_handler.py /
 
 # Start the container
-CMD ["python", "rp_handler.py"]
+CMD python -u rp_handler.py
