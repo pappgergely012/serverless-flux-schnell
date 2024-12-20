@@ -4,7 +4,7 @@ invisible_watermark
 transformers==4.42.4
 xformers
 protobuf
-torch==2.1
+torch==2.5.1
 runpod
 Pillow
 sentencepiece
