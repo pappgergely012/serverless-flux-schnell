@@ -19,7 +19,7 @@ class ModelHandler:
 
     def load_base(self):
         base_pipe = DiffusionPipeline.from_pretrained(
-            "black-forest-labs/FLUX.1-schnell",torch_dtype=torch.float16, variant="fp16", use_safetensors=True, add_watermarker=False
+            "black-forest-labs/FLUX.1-schnell",torch_dtype=torch.float16, use_safetensors=True, add_watermarker=False
         )
         base_pipe = base_pipe.to("cuda", silence_dtype_warnings=True)
         base_pipe.enable_xformers_memory_efficient_attention()
