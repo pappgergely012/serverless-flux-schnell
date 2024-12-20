@@ -10,7 +10,7 @@ RUN pip install -r requirements.txt
 
 # Cache Models
 COPY builder/cache_models.py /cache_models.py
-RUN python3.11 /cache_models.py 
+RUN python /cache_models.py 
 
 ADD src .
 
