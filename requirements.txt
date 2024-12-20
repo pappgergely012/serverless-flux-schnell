@@ -1,3 +1,7 @@
 git+https://github.com/huggingface/diffusers.git
 torch==2.5.1
 runpod
+transformers
+xformers
+invisible_watermark
+protobuf
