@@ -14,7 +14,5 @@ RUN python3.11 /cache_models.py
 
 ADD src .
 
-COPY rp_handler.py /
-
 # Start the container
-CMD python -u rp_handler.py
+CMD python -u /rp_handler.py
